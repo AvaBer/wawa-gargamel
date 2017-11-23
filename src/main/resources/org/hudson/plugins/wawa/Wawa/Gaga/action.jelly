@@ -1,0 +1,12 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout"
+         xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:p="/lib/hudson/project">
+    <j:set var="wawa" value="${it.action(Wawa.class).displayName}"/>
+    <body style="float: left; ">
+        <div class="redbold" style="border: 5px solid gray;  overflow-wrap: break-word;">
+            <h2>I'm GAGA yo!!!</h2>
+            <h2>${it}</h2>
+        </div>
+    </body>
+
+</j:jelly>

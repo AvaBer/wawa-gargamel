@@ -1,0 +1,12 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout"
+         xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:p="/lib/hudson/project">
+    <j:set var="averageBuildTime" value="${%Average Build Time: }${from.buildTimeEstimate}" scope="parent"/>
+    <div class="redbold" style="border: 5px solid gray; padding: 1em;">
+        <h1>I'm FLOATING yo!!!</h1>
+        ${it.parent}
+        <br/>
+        ${from}
+        <h2>${averageBuildTime}</h2>
+    </div>
+</j:jelly>

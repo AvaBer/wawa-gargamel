@@ -1,0 +1,16 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout"
+         xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:p="/lib/hudson/project">
+    <st:parentScope>
+        <j:set var="averageBuildTime" value="${%Average Build Time: }${action.buildTimeEstimate}" scope="parent"/>
+        <st:header name="WAWA" value="${averageBuildTime}"/>
+
+
+        <div class="redbold"
+             style="border-top: 5px solid gray; border-bottom: 5px solid gray;  overflow-wrap: break-word;">
+            <h3>${averageBuildTime}</h3>
+            <j:set var="ESTIMATE" value="${it.buildTimeEstimate}"/>
+        </div>
+
+    </st:parentScope>
+</j:jelly>

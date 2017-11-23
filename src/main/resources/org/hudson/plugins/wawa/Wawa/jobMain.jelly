@@ -1,0 +1,13 @@
+<?jelly escape-by-default='true'?>
+<j:jelly  xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout"
+         xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:sts="jelly:stapler">
+    <!--<div class="container-fluid">-->
+    <j:set var="averageBuildTime" value="${%Average Build Time: }${it.estimateDebug}" scope="parent"/>
+    <div style="clear: none; border: 5px solid gray; padding: 1em;">
+        <j:set var="ESTIMATE" value="${it.buildTimeEstimate}"/>
+        <h2>${averageBuildTime}</h2>
+        <st:include page="averageDuration.jelly"/>
+
+    </div>
+    <!--</div>-->
+</j:jelly>

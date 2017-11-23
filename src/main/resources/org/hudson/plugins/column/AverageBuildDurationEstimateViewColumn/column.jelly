@@ -1,0 +1,41 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:i="jelly:fmt">
+    <!--<j:choose>-->
+        <!--<j:when test="${job.getLastBuild() == null}">-->
+            <!--<j:set var="sortData" value="0"/>-->
+            <!--<j:set var="buildDurationString" value="N/A"/>-->
+            <!--<j:set var="naTooltip" value="${%Only shown when build is running}"/>-->
+        <!--</j:when>-->
+        <!--<j:when test="${job.getLastBuild() != null}">-->
+            <!--<j:set var="lastBuild" value="${job.getLastBuild()}"/>-->
+            <!--<j:choose>-->
+                <!--&lt;!&ndash; Build running since &ndash;&gt;-->
+                <!--<j:when test="${it.getBuildDurationType()==0 and lastBuild.isBuilding()}">-->
+                    <!--<j:set var="sortData" value="${it.getSortDataBuildRunningSince(job)}"/>-->
+                    <!--<j:set var="buildDurationString" value="${%Started_x_ago(lastBuild.getTimestampString())}"/>-->
+                <!--</j:when>-->
+                <!--<j:when test="${it.getBuildDurationType()==0 and !lastBuild.isBuilding()}">-->
+                    <!--<j:set var="sortData" value="0"/>-->
+                    <!--<j:set var="buildDurationString" value="N/A"/>-->
+                    <!--<j:set var="naTooltip" value="${%Only shown when build is running}"/>-->
+                <!--</j:when>-->
+                <!--&lt;!&ndash; Average build duration &ndash;&gt;-->
+                <!--<j:when test="${it.getBuildDurationType()==1}">-->
+                    <!--<j:set var="sortData" value="0"/>-->
+                    <!--<j:set var="buildDurationString" value="${it.getAverageBuildDurationString(job)}"/>-->
+                <!--</j:when>-->
+            <!--</j:choose>-->
+        <!--</j:when>-->
+    <!--</j:choose>--><j:choose>
+    <j:when test="${job.getLastBuild() == null}">
+        <j:set var="sortData" value="0"/>
+        <j:set var="buildDurationString" value="N/A"/>
+    </j:when>
+    <j:when test="${job.getLastBuild() != null}">
+        <j:set var="sortData" value="0"/>
+        <j:set var="buildDurationString" value="${it.getAverageBuildDurationString(job)}"/>
+        <j:set var="naTooltip" value="${%Last build took: } ${job.lastBuild.durationString}"/>
+    </j:when>
+</j:choose>
+    <td data="${sortData}" tooltip="${naTooltip}">${buildDurationString}</td>
+</j:jelly>

@@ -1,0 +1,16 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns="http://www.w3.org/1999/xhtml" xmlns:j="jelly:core" xmlns:st="jelly:stapler"
+         xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+    <st:header name="ESTIMATE" value="${it.buildTimeEstimate}"> asd</st:header>
+
+    <j:set var="averageBuildTime" value="${%Average Build Time: }${it.buildTimeEstimate}" scope="parent"/>
+    <l:layout title="Wawa" permission="${app.ADMINISTER}" norefresh="true">
+        <st:include it="${it.target}" page="sidepanel.jelly" />
+        <l:main-panel>
+            Text n' stuff:
+            <br/>
+            <h1>I'm indexing stuffs!</h1>
+            <h2>${averageBuildTime}</h2>
+        </l:main-panel>
+    </l:layout>
+</j:jelly>
